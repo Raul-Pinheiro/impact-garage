@@ -32,7 +32,7 @@
         object-fit: contain;
       }
       .car-bg {
-        background-image: url("./porsche.jpg");
+        background-image: url("./assets/carroBranco.jpg");
         background-size: cover;
         background-position: center;
         height: 400px; /* ajuste a altura como quiser */
@@ -51,6 +51,9 @@
         object-fit: cover; /* garante que a imagem preencha mantendo proporção */
         border-radius: 8px;
       }
+      body {
+        font-family: "Poppins", sans-serif;
+      }
     </style>
 
     <title>Impact</title>
@@ -60,7 +63,11 @@
     <nav class="navbar navbar-dark bg-dark w-100">
       <div class="d-flex align-items-center justify-content-between w-100">
         <a class="navbar-brand align-self-center ms-4" href="#">
-          <img src="./impactLogoOriginal.png" alt="Logo Impact" class="logo" />
+          <img
+            src="./assets/impactLogoOriginal.png"
+            alt="Logo Impact"
+            class="logo"
+          />
         </a>
         <div class="ms-auto">
           <a
@@ -80,7 +87,7 @@
               />
             </svg>
           </a>
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="https://wa.me/351926413947">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -94,25 +101,8 @@
               />
             </svg>
           </a>
-          <a
-            class="navbar-brand"
-            href="mailto:exemplo@dominio.com"
-            target="_blank"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-envelope"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"
-              />
-            </svg>
-          </a>
-          <a class="navbar-brand" href="#">
+
+          <a class="navbar-brand" href="#contact">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -172,7 +162,7 @@
     <div class="container mt-5">
       <!-- BLOCO 1 -->
       <div class="row align-items-center mb-4" id="about">
-        <div class="col-md-4">
+        <div class="col-md-4 mt-2">
           <h2>Sobre Nós</h2>
           <p>
             A Impact é uma empresa comprometida com excelência e inovação no
@@ -182,7 +172,11 @@
         </div>
         <div class="col-md-8">
           <div class="img-container">
-            <img src="./ferrari.jpg" alt="Imagem Ferrari" class="img-fluid" />
+            <img
+              src="./assets/ferrari.jpg"
+              alt="Imagem Owners"
+              class="img-fluid"
+            />
           </div>
         </div>
       </div>
@@ -192,13 +186,13 @@
         <div class="col-md-8">
           <div class="img-container">
             <img
-              src="./carroBranco.jpg"
+              src="./assets/porsche.jpg"
               alt="Imagem Impact"
               class="img-fluid"
             />
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mt-2">
           <h2>Serviços</h2>
           <p>
             Oferecemos personalização automotiva, manutenção premium e
@@ -208,13 +202,17 @@
       </div>
 
       <div class="row align-items-center mb-4" id="prices">
-        <div class="col-md-4">
+        <div class="col-md-4 mt-2">
           <h2>Preços</h2>
           <p>Segue nossa tabela de preços, mantenha-se atualizado</p>
         </div>
         <div class="col-md-8">
           <div class="img-container">
-            <img src="./audi.jpg" alt="Imagem Ferrari" class="img-fluid" />
+            <img
+              src="./assets/audi.jpg"
+              alt="Imagem Ferrari"
+              class="img-fluid"
+            />
           </div>
         </div>
       </div>
@@ -224,23 +222,52 @@
       <div class="container">
         <div class="row justify-content-between align-items-center">
           <!-- Contatos -->
-          <div class="col-md-6 mb-3">
+          <div class="col-md-4 mb-3" id="contact">
             <h5>Contactos</h5>
-            <p class="mb-1">
-              <i class="bi bi-envelope-fill me-2"></i>contato@seudominio.com
-            </p>
             <p class="mb-0">
-              <i class="bi bi-telephone-fill me-2"></i>(11) 99999-9999
+              <i class="bi bi-telephone-fill me-2"></i>(+351) 926 413 947
+            </p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Endereço</h5>
+            <p class="mb-1">
+              <a
+                href="https://g.co/kgs/j2zoSxK"
+                class="text-white text-decoration-none"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-geo-alt"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"
+                  />
+                  <path
+                    d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+                  />
+                </svg>
+              </a>
+              Praceta António Enes 14A, 2795-019 Linda-a-Velha
             </p>
           </div>
 
           <!-- Redes Sociais -->
-          <div class="col-md-6 text-md-end mb-3">
+          <div class="col-md-4 mb-3">
             <h5>Social Media</h5>
-            <a href="#" class="text-light me-3" aria-label="Instagram"
+            <a
+              href="https://www.instagram.com/impactgarage.pt?igsh=eXFjbTV2eGxhOXdh"
+              class="text-light me-3"
+              aria-label="Instagram"
               ><i class="bi bi-instagram fs-4"></i
             ></a>
-            <a href="#" class="text-light me-3" aria-label="WhatsApp"
+            <a
+              href="https://wa.me/351926413947"
+              class="text-light me-3"
+              aria-label="WhatsApp"
               ><i class="bi bi-whatsapp fs-4"></i
             ></a>
           </div>
@@ -256,7 +283,7 @@
     <!-- Ícone flutuante de whats app -->
 
     <a
-      href="https://wa.me/5585987654321"
+      href="https://wa.me/351926413947"
       class="btn btn-success rounded-circle position-fixed d-flex align-items-center justify-content-center"
       style="
         width: 60px;
