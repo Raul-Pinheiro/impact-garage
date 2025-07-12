@@ -58,6 +58,10 @@
         object-fit: cover; /* garante que a imagem preencha mantendo proporção */
         border-radius: 8px;
       }
+      .card-img-top {
+        width: 100%;
+        height: 300px;
+      }
       .cards-container {
         gap: 5px;
       }
@@ -96,19 +100,35 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         z-index: 10;
       }
-      .mix-text {
-        mix-blend-mode: lighten;
-      }
-      @media (max-width: 768px) {
-        .cards-container .card {
-          flex: 1 1 calc(50% - 5px); /* 2 por linha no celular */
-        }
+
+      .visible {
+        display: flex;
       }
 
-      @media (max-width: 480px) {
-        .cards-container .card {
-          flex: 1 1 100%; /* 1 por linha no celular menor */
-        }
+      .invisible {
+        display: none;
+        transition: all 1s;
+      }
+
+      .carousel {
+        height: 400px; /* altura fixa, pode ajustar */
+        max-width: 100%;
+      }
+
+      .carousel-inner,
+      .carousel-item,
+      .carousel-item img {
+        height: 100%;
+      }
+
+      .carousel-item img {
+        width: 100%;
+        object-fit: cover; /* cobre o container mantendo proporção, cortando se necessário */
+        /* use object-fit: contain se quiser mostrar tudo da imagem, mesmo que tenha espaço vazio */
+      }
+
+      .mix-text {
+        mix-blend-mode: lighten;
       }
       body {
         font-family: "Poppins", sans-serif;
@@ -201,9 +221,6 @@
             <li class="nav-item">
               <a class="nav-link" href="#services">Serviços</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#prices">Preços</a>
-            </li>
           </ul>
         </div>
       </div>
@@ -213,34 +230,72 @@
       class="car-bg d-flex align-items-center justify-content-center text-white"
     >
       <div class="text-left bg-dark mix-text">
-        <h1>Bem-vindo à Impact Garage</h1>
-        <p>Conheça os melhores serviços para o teu veículo</p>
+        <h1>Seu carro como se fosse nosso!</h1>
+        <p>A arte do detalhe</p>
       </div>
     </div>
 
     <div class="container mt-5">
-      <!-- BLOCO 1 -->
+      <!-- ABOUT COMPANY -->
       <div class="row align-items-center mb-4" id="about">
         <div class="col-md-4 mt-2">
           <h2>Sobre Nós</h2>
           <p>
-            A Impact é uma empresa comprometida com excelência e inovação no
-            setor automotivo. Nosso foco é entregar soluções impactantes para o
-            seu negócio.
+            A Impact Garage é uma empresa especializada em cuidados automotivos,
+            focada em manter seu veículo impecável e valorizado. Oferecemos uma
+            variedade de serviços, desde lavagem express até polimento técnico e
+            proteção cerâmica, sempre com resultados que superam as
+            expectativas. Nossa equipe utiliza técnicas modernas e produtos
+            premium para garantir limpeza detalhada, proteção e restauração da
+            pintura e interiores. Se busca eficiência, cuidado minucioso e
+            atendimento personalizado, aqui encontrará a solução ideal para
+            preservar seu veículo. Confie na nossa experiência para transformar
+            seu carro com serviços que vão desde a lavagem até a correção da
+            pintura e aplicação de proteções duradouras.
           </p>
         </div>
-        <div class="col-md-8">
-          <div class="img-container">
-            <img
-              src="./assets/owners.jpg"
-              alt="Imagem Owners"
-              class="img-fluid"
-            />
+        <div id="carouselExample" class="col-md-8 carousel slide">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="./assets/owners.jpg"
+                alt="Imagem Owners"
+                class="img-fluid carousel-imgs"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                src="./assets/owners1.jpg"
+                alt="Imagem Owners"
+                class="img-fluid carousel-imgs"
+              />
+            </div>
+            <div class="carousel-item">
+              <img src="./assets/hall.jpg" class="d-block w-100" alt="..." />
+            </div>
           </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
 
-      <!-- BLOCO 2 -->
+      <!-- SERVICES -->
       <div class="row align-items-center mb-4" id="services">
         <div class="col-md-12 mt-2">
           <h2>Serviços</h2>
@@ -252,9 +307,9 @@
             <div class="col-12 col-sm-6 col-md-3 mb-3">
               <div class="card h-100">
                 <img
-                  src="./assets/BG209027.png"
+                  src="./assets/pintura.jpg"
                   class="card-img-top"
-                  alt="..."
+                  alt="Porsche Branco"
                 />
                 <div class="card-body">
                   <h5
@@ -271,17 +326,22 @@
                       data-bs-target="#product1"
                       aria-expanded="false"
                       aria-controls="product1"
+                      onclick="toggleDetails('product1')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div
+                    class="mb-2"
+                    id="detail-product1"
+                    style="min-height: fit-content"
+                  >
                     <div
-                      class="collapse"
+                      class="collapse collapse-vertical"
                       id="product1"
                       data-bs-parent="#accordionExample"
                     >
-                      <div class="card card-body">
+                      <div class="card card-body" style="width: 100%">
                         <p class="card-text">
                           * Pré Lavagem * Lavagem Manual * Limpeza de Jantes *
                           Secagem total * Aspiração Simples de interiores *
@@ -305,11 +365,7 @@
 
             <div class="col-12 col-sm-6 col-md-3 mb-3">
               <div class="card h-100">
-                <img
-                  src="./assets/BG209027.png"
-                  class="card-img-top"
-                  alt="..."
-                />
+                <img src="./assets/couro2.jpg" class="card-img-top" alt="..." />
                 <div class="card-body">
                   <h5
                     class="card-title fs-6 card-title-font"
@@ -325,11 +381,12 @@
                       data-bs-target="#product2"
                       aria-expanded="false"
                       aria-controls="product2"
+                      onclick="toggleDetails('product2')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div class="mb-2" id="detail-product2">
                     <div
                       class="collapse"
                       id="product2"
@@ -379,11 +436,12 @@
                       data-bs-target="#product3"
                       aria-expanded="false"
                       aria-controls="product3"
+                      onclick="toggleDetails('product3')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div class="mb-2" id="detail-product3">
                     <div
                       class="collapse"
                       id="product3"
@@ -414,7 +472,7 @@
             <div class="col-12 col-sm-6 col-md-3 mb-3">
               <div class="card h-100 position-relative">
                 <img
-                  src="./assets/BG209027.png"
+                  src="./assets/interiores.jpg"
                   class="card-img-top"
                   alt="..."
                 />
@@ -433,11 +491,12 @@
                       data-bs-target="#product4"
                       aria-expanded="false"
                       aria-controls="product4"
+                      onclick="toggleDetails('product4')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div class="mb-2" id="detail-product4">
                     <div
                       class="collapse"
                       id="product4"
@@ -469,11 +528,7 @@
 
             <div class="col-12 col-sm-6 col-md-3 mb-3">
               <div class="card h-100">
-                <img
-                  src="./assets/BG209027.png"
-                  class="card-img-top"
-                  alt="..."
-                />
+                <img src="./assets/lambo1.jpg" class="card-img-top" alt="..." />
                 <div class="card-body">
                   <h5
                     class="card-title fs-6 card-title-font"
@@ -489,11 +544,12 @@
                       data-bs-target="#product5"
                       aria-expanded="false"
                       aria-controls="product5"
+                      onclick="toggleDetails('product5')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div class="mb-2" id="detail-product5">
                     <div
                       class="collapse"
                       id="product5"
@@ -520,11 +576,7 @@
 
             <div class="col-12 col-sm-6 col-md-3 mb-3">
               <div class="card h-100 position-relative">
-                <img
-                  src="./assets/BG209027.png"
-                  class="card-img-top"
-                  alt="..."
-                />
+                <img src="./assets/moto2.jpg" class="card-img-top" alt="..." />
                 <div class="card-body">
                   <h5
                     class="card-title fs-6 card-title-font"
@@ -540,11 +592,12 @@
                       data-bs-target="#product6"
                       aria-expanded="false"
                       aria-controls="product6"
+                      onclick="toggleDetails('product6')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div class="mb-2" id="detail-product6">
                     <div
                       class="collapse"
                       id="product6"
@@ -574,11 +627,7 @@
 
             <div class="col-12 col-sm-6 col-md-3 mb-3">
               <div class="card h-100 position-relative">
-                <img
-                  src="./assets/BG209027.png"
-                  class="card-img-top"
-                  alt="..."
-                />
+                <img src="./assets/lambo.png" class="card-img-top" alt="..." />
                 <div class="card-body">
                   <h5
                     class="card-title fs-6 card-title-font"
@@ -594,11 +643,12 @@
                       data-bs-target="#product7"
                       aria-expanded="false"
                       aria-controls="product7"
+                      onclick="toggleDetails('product7')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div class="mb-2" id="detail-product7">
                     <div
                       class="collapse"
                       id="product7"
@@ -649,11 +699,12 @@
                       data-bs-target="#product8"
                       aria-expanded="false"
                       aria-controls="product8"
+                      onclick="toggleDetails('product8')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div class="mb-2" id="detail-product8">
                     <div
                       class="collapse"
                       id="product8"
@@ -686,11 +737,7 @@
 
             <div class="col-12 col-sm-6 col-md-3 mb-3">
               <div class="card h-100 position-relative">
-                <img
-                  src="./assets/BG209027.png"
-                  class="card-img-top"
-                  alt="..."
-                />
+                <img src="./assets/couro.jpg" class="card-img-top" alt="..." />
                 <div class="card-body">
                   <h5
                     class="card-title fs-6 card-title-font"
@@ -706,11 +753,12 @@
                       data-bs-target="#product9"
                       aria-expanded="false"
                       aria-controls="product9"
+                      onclick="toggleDetails('product9')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div class="mb-2" id="detail-product9">
                     <div
                       class="collapse"
                       id="product9"
@@ -733,7 +781,7 @@
             <div class="col-12 col-sm-6 col-md-3 mb-3">
               <div class="card h-100 position-relative">
                 <img
-                  src="./assets/BG209027.png"
+                  src="./assets/pintura.jpg"
                   class="card-img-top"
                   alt="..."
                 />
@@ -752,11 +800,12 @@
                       data-bs-target="#product10"
                       aria-expanded="false"
                       aria-controls="product10"
+                      onclick="toggleDetails('product10')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div class="mb-2" id="detail-product10">
                     <div
                       class="collapse"
                       id="product10"
@@ -798,11 +847,12 @@
                       data-bs-target="#product11"
                       aria-expanded="false"
                       aria-controls="product11"
+                      onclick="toggleDetails('product11')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div class="mb-2" id="detail-product11">
                     <div
                       class="collapse"
                       id="product11"
@@ -824,11 +874,7 @@
 
             <div class="col-12 col-sm-6 col-md-3 mb-3">
               <div class="card h-100 position-relative">
-                <img
-                  src="./assets/BG209027.png"
-                  class="card-img-top"
-                  alt="..."
-                />
+                <img src="./assets/moto2.jpg" class="card-img-top" alt="..." />
                 <div class="card-body">
                   <h5
                     class="card-title fs-6 card-title-font"
@@ -844,11 +890,12 @@
                       data-bs-target="#product12"
                       aria-expanded="false"
                       aria-controls="product12"
+                      onclick="toggleDetails('product12')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div class="mb-2" id="detail-product12">
                     <div
                       class="collapse"
                       id="product12"
@@ -890,11 +937,12 @@
                       data-bs-target="#product13"
                       aria-expanded="false"
                       aria-controls="product13"
+                      onclick="toggleDetails('product13')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div class="mb-2" id="detail-product13">
                     <div
                       class="collapse"
                       id="product13"
@@ -936,11 +984,12 @@
                       data-bs-target="#product14"
                       aria-expanded="false"
                       aria-controls="product14"
+                      onclick="toggleDetails('product14')"
                     >
                       Detalhes
                     </button>
                   </p>
-                  <div class="mb-2">
+                  <div class="mb-2" id="detail-product14">
                     <div
                       class="collapse"
                       id="product14"
@@ -959,22 +1008,6 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row align-items-center mb-4" id="prices">
-        <div class="col-md-4 mt-2">
-          <h2>Preços</h2>
-          <p>Segue nossa tabela de preços, mantenha-se atualizado</p>
-        </div>
-        <div class="col-md-8">
-          <div class="img-container">
-            <img
-              src="./assets/audi.jpg"
-              alt="Imagem Ferrari"
-              class="img-fluid"
-            />
           </div>
         </div>
       </div>
@@ -1070,5 +1103,19 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
+    <script>
+      function toggleDetails(buttonId) {
+        const btn = document.getElementById(buttonId);
+        const target = document.getElementById(`detail-${buttonId}`);
+
+        if (!target.classList.contains("visible")) {
+          target.classList.add("visible");
+          target.classList.remove("invisible");
+        } else {
+          target.classList.remove("visible");
+          target.classList.add("invisible");
+        }
+      }
+    </script>
   </body>
 </html>
