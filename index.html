@@ -23,19 +23,26 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       .logo {
-        height: 50px; /* Ajustado para caber bem dentro de uma navbar de 50px */
-        width: auto; /* Mantém a proporção correta */
-        display: block; /* Evita espaços em branco */
+        height: 50px;
+        width: auto;
+        display: block;
         object-fit: contain;
       }
       .car-bg {
         background-image: url("./assets/carroBranco.jpg");
         background-size: cover;
-        background-position: center;
-        height: 400px; /* ajuste a altura como quiser */
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 400px;
         width: 100%;
         position: relative;
       }
@@ -51,12 +58,64 @@
         object-fit: cover; /* garante que a imagem preencha mantendo proporção */
         border-radius: 8px;
       }
+      .cards-container {
+        gap: 5px;
+      }
+
+      .custom-card {
+        flex: 1 1 calc(25% - 5px);
+        max-width: 25%;
+        min-width: 250px;
+        margin-bottom: 5px;
+        flex-shrink: unset;
+      }
+
+      .card {
+        position: relative;
+      }
+
+      .row {
+        align-items: flex-start !important;
+      }
+
+      .card-title-font {
+        width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 10px;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .collapse.card-body {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+      }
+      .mix-text {
+        mix-blend-mode: lighten;
+      }
+      @media (max-width: 768px) {
+        .cards-container .card {
+          flex: 1 1 calc(50% - 5px); /* 2 por linha no celular */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .cards-container .card {
+          flex: 1 1 100%; /* 1 por linha no celular menor */
+        }
+      }
       body {
         font-family: "Poppins", sans-serif;
       }
     </style>
 
-    <title>Impact</title>
+    <title>Impact Garage</title>
   </head>
   <body class="bg-light">
     <!-- Links para contactos -->
@@ -153,9 +212,9 @@
     <div
       class="car-bg d-flex align-items-center justify-content-center text-white"
     >
-      <div class="text-center">
-        <h1>Bem-vindo ao site</h1>
-        <p>Seu texto aqui, sobre a imagem</p>
+      <div class="text-left bg-dark mix-text">
+        <h1>Bem-vindo à Impact Garage</h1>
+        <p>Conheça os melhores serviços para o teu veículo</p>
       </div>
     </div>
 
@@ -173,7 +232,7 @@
         <div class="col-md-8">
           <div class="img-container">
             <img
-              src="./assets/ferrari.jpg"
+              src="./assets/owners.jpg"
               alt="Imagem Owners"
               class="img-fluid"
             />
@@ -183,21 +242,724 @@
 
       <!-- BLOCO 2 -->
       <div class="row align-items-center mb-4" id="services">
-        <div class="col-md-8">
-          <div class="img-container">
-            <img
-              src="./assets/porsche.jpg"
-              alt="Imagem Impact"
-              class="img-fluid"
-            />
-          </div>
-        </div>
-        <div class="col-md-4 mt-2">
+        <div class="col-md-12 mt-2">
           <h2>Serviços</h2>
           <p>
-            Oferecemos personalização automotiva, manutenção premium e
-            diagnósticos digitais.
+            Oferecemos uma ampla variedade de serviços para as mais diversas
+            necessidades do cliente. Confira abaixo:
           </p>
+          <div id="accordionExample" class="row">
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Lavagem Express"
+                  >
+                    Lavagem Express
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product1"
+                      aria-expanded="false"
+                      aria-controls="product1"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product1"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">
+                          * Pré Lavagem * Lavagem Manual * Limpeza de Jantes *
+                          Secagem total * Aspiração Simples de interiores *
+                          Limpeza e proteção de plásticos * Limpeza completa de
+                          vidros * Aplicação de condicionador de pneus *
+                          Finalização com quick detail exterior
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary">35 &#8364;</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Repita para os demais cards -->
+
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Lavagem Detalhada"
+                  >
+                    Lavagem Detalhada
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product2"
+                      aria-expanded="false"
+                      aria-controls="product2"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product2"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">
+                          * 2x pré-lavagem (PH alcalino + PH ácido) * Lavagem
+                          manual de neutralização * Limpeza de jantes * Secagem
+                          total * Aspiração detalhada de interiores * Limpeza e
+                          proteção detalhada de plásticos * Limpeza completa de
+                          vidros * Aplicação de condicionador de pneus *
+                          Aplicação de selante hidrofóbico com proteção até 45
+                          dias
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary">85 &#8364;</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Lavagem Detalhada 2.0"
+                  >
+                    Lavagem Detalhada 2.0
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product3"
+                      aria-expanded="false"
+                      aria-controls="product3"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product3"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">
+                          * Descontaminação química da pintura * 2x pré-lavagem
+                          (PH alcalino + PH ácido) * Lavagem manual de
+                          neutralização * Limpeza de jantes * Secagem total *
+                          Aspiração detalhada de interiores * Limpeza completa e
+                          impermeabilização de para-brisas * Aplicação de
+                          condicionador de pneus * Aplicação de selante de
+                          pintura com duração de 3 meses
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary">130 &#8364;</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100 position-relative">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Detalhe Automóvel Interior"
+                  >
+                    Detalhe Automóvel Interior
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product4"
+                      aria-expanded="false"
+                      aria-controls="product4"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product4"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">
+                          * Remoção de bancos * Aspiração completa de carpetes,
+                          bancos e porta-malas * Limpeza e higienização de
+                          estofos (tecido ou couro) * Limpeza detalhada de
+                          painéis, consola, portas e condutas de ar * Hidratação
+                          de couro e aplicação de proteção UV em superfícies
+                          plásticas * Remoção de manchas, poeiras e odores *
+                          Higienização de ar-condicionado
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary"
+                        >Preço sob consulta</small
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Lavagem de Manutenção"
+                  >
+                    Lavagem de Manutenção
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product5"
+                      aria-expanded="false"
+                      aria-controls="product5"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product5"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">
+                          Exclusivamente para: * Clientes que subscrevam um
+                          plano de lavagem mensal após lavagem detalhada *
+                          Clientes que tenham efetuado um serviço de proteção de
+                          pintura
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary">50 &#8364;</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100 position-relative">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Polimento Simples One Step"
+                  >
+                    Polimento Simples One Step
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product6"
+                      aria-expanded="false"
+                      aria-controls="product6"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product6"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">
+                          * Remoção de Riscos e Marcas Leves * Restauração do
+                          brilho da pintura sem comprometimento do verniz *
+                          Apenas uma etapa de corte e refino, com produtos e
+                          boinas estrategicamente definidos * Ideal para
+                          veículos com pequenos defeitos visuais
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary"
+                        >Preço sob consulta</small
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100 position-relative">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Polimento Técnico - Correção de Pintura"
+                  >
+                    Polimento Técnico - Correção de Pintura
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product7"
+                      aria-expanded="false"
+                      aria-controls="product7"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product7"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">
+                          * Remoção de Riscos, swirls, manchas de água e
+                          oxidação * Brilho profundo, reflexo espelhado e
+                          acabamento de alto padrão * Correção executada em
+                          várias etapas * Preparação ideal para aplicação de
+                          proteção cerâmica * Ideal para pinturas desgastadas,
+                          com riscos ou mal cuidadas
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary"
+                        >Preço sob consulta</small
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100 position-relative">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Proteção Cerâmica de Pintura"
+                  >
+                    Proteção Cerâmica de Pintura
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product8"
+                      aria-expanded="false"
+                      aria-controls="product8"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product8"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">
+                          A proteção cerâmica é uma camada líquida aplicada
+                          sobre a pintura do veículo que, após cura, forma uma
+                          película resistente, duradoura e com alto brilho *
+                          Proteção de pintura de até 5 anos * Efeito hidrofóbico
+                          * Proteção contra raios UV * Elevada resistência
+                          contra elementos químicos e contaminações * Facilidade
+                          na limpeza e manutenção da pintura * Realça o brilho
+                          do carro e confere efeito espelhado.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary"
+                        >Preço sob consulta</small
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100 position-relative">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Lavagem de Estofos"
+                  >
+                    Lavagem de Estofos
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product9"
+                      aria-expanded="false"
+                      aria-controls="product9"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product9"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">Tratamento de pele e couro</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary">100 &#8364;</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100 position-relative">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Remoção de Calcário nos Vidros"
+                  >
+                    Remoção de Calcário nos Vidros
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product10"
+                      aria-expanded="false"
+                      aria-controls="product10"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product10"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">Sem detalhes disponíveis</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary">120 &#8364;</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100 position-relative">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Restauro e Proteção de Cerâmica de Ótica"
+                  >
+                    Restauro e Proteção Cerâmica de Ótica
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product11"
+                      aria-expanded="false"
+                      aria-controls="product11"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product11"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">Sem detalhes disponíveis</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary">40 &#8364;</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100 position-relative">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Proteção cerâmica de jantes"
+                  >
+                    Proteção Cerâmica de Jantes
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product12"
+                      aria-expanded="false"
+                      aria-controls="product12"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product12"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">Sem detalhes disponíveis</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary">100 &#8364;</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100 position-relative">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Proteção cerâmica de vidros"
+                  >
+                    Proteção Cerâmica de Vidros
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product13"
+                      aria-expanded="false"
+                      aria-controls="product13"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product13"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">Sem detalhes disponíveis</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary">150 &#8364;</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3 mb-3">
+              <div class="card h-100 position-relative">
+                <img
+                  src="./assets/BG209027.png"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5
+                    class="card-title fs-6 card-title-font"
+                    title="Impermeabilização de Capotas"
+                  >
+                    Impermeabilização de Capota
+                  </h5>
+                  <p>
+                    <button
+                      class="btn btn-warning"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#product14"
+                      aria-expanded="false"
+                      aria-controls="product14"
+                    >
+                      Detalhes
+                    </button>
+                  </p>
+                  <div class="mb-2">
+                    <div
+                      class="collapse"
+                      id="product14"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="card card-body">
+                        <p class="card-text">Sem detalhes disponíveis</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-4 position-absolute bottom-0">
+                    <p class="card-text">
+                      <small class="text-body-secondary">100 &#8364;</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -217,7 +979,7 @@
         </div>
       </div>
     </div>
-
+    <!-- RODAPÈ-->
     <footer class="bg-dark text-light pt-4 mt-5">
       <div class="container">
         <div class="row justify-content-between align-items-center">
